@@ -1,0 +1,20 @@
+/* 基础配色 */
+$primary: #564FC1;  // 主色/默认/多用于链接文
+$success: #34BFA3;  // 成功/添加/增加
+$warning: #FFB822;  // 提示/警告 深色背景上代替主色按钮
+$danger: #F4516C;   // 危险/删除/减少
+$info: #C6C6C6;     // 不重要色
+$secondary: #36a3f7;// 其他配色/信息色
+
+/* 字体颜色 */
+$color-title: #4A4A4A; // 多用于标题，表头
+$color-body: #666; // 多用于一级导航、正文
+$color-not-matter: #999; // 多用于三级按钮文字和标注性文案
+
+/* 其他颜色 */
+$bg-content: #F2F3F8; // 用于内容区的背景
+$bg-table-hover: #f7f8fa; // 用于表单栏鼠标移入背景效果
+$border: #D8D8D8; // 用于表单的描边和分割线输入框的描边
+$placeholder: #C6C6C6; // 用于不可点击按钮和占位符文字
+
+$box-shadow-light: 0 2px 12px 0 rgba(0, 0, 0, 0.1) !default;

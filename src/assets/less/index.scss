@@ -1,0 +1,66 @@
+@import '../element-ui/element-variables.scss';
+@import '../element-ui/src/index.scss';
+@import '../font//iconfont.css';
+
+body,p,h1,h2,h3,h4{
+    padding: 0;
+    margin: 0;
+}
+// flex end
+
+.flex{
+    display: flex;
+}
+.end{
+    justify-content: flex-end;
+}
+.between{
+    justify-content: space-between;
+}
+
+.align-items-center{
+    align-items: center;
+}
+
+.mer-overlay-enter {
+    animation: mer-overlay-in .2s ease;
+}
+
+.mer-overlay-leave {
+    animation: mer-overlay-out .2s ease forwards;
+}
+
+.pagination{
+    margin-top: 30px;
+    height: 32px;
+    text-align: right;
+}
+
+@keyframes mer-overlay-in {
+    0% {
+    opacity: 0;
+    }
+    100% {
+    }
+}
+
+@keyframes mer-overlay-out {
+    0% {
+    }
+    100% {
+    opacity: 0;
+    }
+}
+
+.mer-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: calc(100% * 10000);
+    background: rgba(0, 0, 0, .1);
+    z-index: 2000;
+}
+.mer-drawer-parent--hidden {
+    overflow: hidden;
+}

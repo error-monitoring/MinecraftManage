@@ -1,0 +1,59 @@
+{
+  "name": "merculet-fengshouxiezhuang",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "vue-cli-service serve --mode development",
+    "prod-cn": "NODE_ENV=production NODE_EVENT=prod vue-cli-service build --mode production",
+    "test-cn": "NODE_ENV=production NODE_EVENT=test vue-cli-service build  --mode development",
+    "lint": "vue-cli-service lint",
+    "jenkins": "node ./node_modules/mwjenkins/main.js --zh_cn",
+    "jenkins-stop": "node ./node_modules/mwjenkins/main.js --zh_cn --fun=stop"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "date-fns": "^1.29.0",
+    "element-ui": "^2.4.9",
+    "highlight.js": "^9.12.0",
+    "mwjenkins": "^1.0.6",
+    "text-loader": "^0.0.1",
+    "vue": "^2.5.17",
+    "vue-markdown": "^2.2.4",
+    "vue-router": "^3.0.1",
+    "vuex": "^3.0.1",
+    "xss": "^1.0.3"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.0.0",
+    "@vue/cli-plugin-eslint": "^3.0.0",
+    "@vue/cli-service": "^3.0.0",
+    "babel-plugin-component": "^1.1.1",
+    "babel-plugin-import": "^1.10.0",
+    "lint-staged": "^7.2.2",
+    "postcss-aspect-ratio-mini": "^0.0.2",
+    "postcss-import": "^12.0.0",
+    "postcss-preset-env": "^6.1.1",
+    "postcss-url": "^8.0.0",
+    "postcss-write-svg": "^3.0.1",
+    "node-sass": "^4.9.3",
+    "sass-loader": "^7.1.0",
+    "vue-template-compiler": "^2.5.17"
+  },
+  "lint-staged": {
+    "*.js": [
+      "vue-cli-service lint",
+      "git add"
+    ],
+    "*.vue": [
+      "vue-cli-service lint",
+      "git add"
+    ]
+  },
+  "jenkins": {
+    "key": "115102e35f61aa84083989d46dfb01ea45",
+    "name": "wenquan.huang",
+    "dev": {
+      "zh_cn": "merculet-open-platform-site-web-cn-k8s-test-hangzhou"
+    }
+  }
+}

@@ -1,0 +1,149 @@
+// @import '../font/iconfont.css'; 
+/* 改变主题色变量 */
+/* Colors
+-------------------------- */
+$--color-white: #fff !default;
+$--color-black: #000 !default;
+$--color-transparent: transparent !default;
+/* 主色/默认 */
+$--color-primary: #564FC1 !default;
+/* 成功/添加/增加 */
+$--color-success: #34BFA3 !default;
+/* 提示/警告 深色背景上代替主色按钮 */
+$--color-warning: #FFB822 !default;
+/* 危险/删除/减少 */
+$--color-danger: #F4516C !default;
+/* 不重要色 */
+$--color-info: #C6C6C6 !default;
+/* 其他配色/信息色 */
+$--color-secondary: #36a3f7 !default;
+
+$--color-secondary-light: mix($--color-white, $--color-secondary, 80%) !default;
+$--color-secondary-lighter: mix($--color-white, $--color-secondary, 90%) !default;
+
+/* 多用于一级标题 主要文字 */
+$--color-text-primary: #4A4A4A !default;
+/* 多用于表头、二级标题和正文 常规文字 */
+$--color-text-regular: #666666 !default;
+/* 多用于三级按钮文字和标注性文案 次要文字 */
+$--color-text-secondary: #999999 !default;
+/* 用于不可点击按钮和占位符文字 占位文字 */
+$--color-text-placeholder: #C6C6C6 !default;
+
+/* Background
+-------------------------- */
+/* 用于内容区的背景 基础背景色 */
+$--background-color-base: #f7f8fa !default;
+
+/* Border
+-------------------------- */
+$--border-color-base: #D8D8D8 !default;
+$--border-color-light: #D8D8D8 !default;
+$--border-color-lighter: #D8D8D8 !default;
+
+/* Font
+-------------------------- */
+$--font-size-base: 14px !default;   /* 用于二级标题、一级按钮、二级按钮内字体、tab栏文字、侧边菜单栏 */
+$--font-size-small: 12px !default;  /* 用于内容、注释、面包屑文字、三级按钮内字体 */
+$--font-size-large: 16px !default;  /* 用于一级标题内文字 */
+$--font-size-title-primary: 18px !default; /* 自定义 用于板块名称 */
+$--font-color-disabled-base: #C6C6C6 !default;
+$--font-weight-primary: 400 !default;
+$--font-line-height-primary: 24px !default;
+
+/* Icon
+-------------------------- */
+$--icon-color: $--color-text-regular !default;
+
+/* Button
+-------------------------- */
+$--button-secondary-border: $--color-secondary !default;
+$--button-secondary-color: $--color-white !default;
+$--button-secondary-fill: $--color-secondary !default;
+$--button-hover-tint-percent: 25% !default;
+$--button-active-shade-percent: 15% !default;
+
+/* Dialog
+-------------------------- */
+// $--dialog-background-color: $--color-primary-light-4 !default;
+// $--dialog-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3) !default;
+// $--dialog-close-hover-color: $--color-primary !default;
+// $--dialog-title-font-size: $--font-size-large !default;
+$--dialog-font-size: $--font-size-base !default;
+// $--dialog-line-height: $--font-line-height-primary !default;
+$--dialog-padding-primary: 30px !default;
+
+/* Table
+-------------------------- */
+$--table-header-color: $--color-text-regular !default;
+
+/* Card
+--------------------------*/
+$--card-border-color: $--border-color-lighter !default;
+$--card-border-radius: 0px !default;
+$--card-padding: 22px !default;
+
+/* Tag
+-------------------------- */
+$--tag-fill: $--color-primary !default;
+$--tag-color: $--color-white !default;
+$--tag-border: $--color-primary !default;
+$--tag-border-radius: 50px !default;
+
+$--tag-info-fill: $--color-info !default;
+$--tag-info-border: $--color-info !default;
+$--tag-info-color: $--color-white !default;
+
+$--tag-primary-fill: $--color-primary !default;
+$--tag-primary-border: $--color-primary !default;
+$--tag-primary-color: $--color-white !default;
+
+$--tag-success-fill: $--color-success !default;
+$--tag-success-border: $--color-success !default;
+$--tag-success-color: $--color-white !default;
+
+$--tag-warning-fill: $--color-warning !default;
+$--tag-warning-border: $--color-warning !default;
+$--tag-warning-color: $--color-white !default;
+
+$--tag-danger-fill: $--color-danger !default;
+$--tag-danger-border: $--color-danger !default;
+$--tag-danger-color: $--color-white !default;
+
+
+$--tag-secondary-fill: $--color-secondary !default;
+$--tag-secondary-border: $--color-secondary !default;
+$--tag-secondary-color: $--color-white !default;
+
+$--tag-small-padding: 0 16px !default;
+
+/* Message Box
+-------------------------- */
+$--msgbox-width: 420px !default;
+$--msgbox-border-radius: 4px !default;
+$--msgbox-font-size: $--font-size-large !default;
+$--msgbox-content-font-size: $--font-size-base !default;
+$--msgbox-content-color: $--color-text-regular !default;
+$--msgbox-error-font-size: 12px !default;
+$--msgbox-padding-primary: 15px !default;
+
+$--msgbox-success-color: $--color-success !default;
+$--msgbox-info-color: $--color-info !default;
+$--msgbox-warning-color: $--color-warning !default;
+$--msgbox-danger-color: $--color-danger !default;
+
+/* Tooltip
+-------------------------- */
+$--tooltip-fill: $--color-text-primary !default;
+// $--tooltip-fill: $--color-transparent !default;
+$--tooltip-color: $--color-white !default;
+$--tooltip-font-size: 12px !default;
+$--tooltip-border-color: $--color-text-primary !default;
+$--tooltip-arrow-size: 6px !default;
+$--tooltip-padding: 3px 8px !default;
+/* 改变 icon 字体路径变量，必需 */
+$--font-path: '~element-ui/lib/theme-chalk/fonts';
+
+$--input-focus-border: red!default;
+
+@import "./src/index.scss";
