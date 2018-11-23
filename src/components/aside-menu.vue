@@ -12,7 +12,7 @@
             @select="selectMenu"
             :collapse="isCollapse&&!isFixed">
             <template v-for="(item,index) in menuItem">
-                <!-- <el-submenu :key="index" v-if="item.children&&item.children.length>0&&item.childrenShow" :index="toUrl(index)">
+                <el-submenu :key="index" v-if="item.children&&item.children.length>0&&item.childrenShow" :index="toUrl(index)">
                     
                     <template slot="title">
                         <i class="icon iconfont menu-item-icon" :class="toIcon(item.icon)"></i>
@@ -20,9 +20,10 @@
                         <div class="active-point"></div>
                     </template>
                     <el-menu-item v-for=" (i,index1) in item.children" :key='index1' :class="{'is-active':i.url == defaultActive}" :index="toUrl(i.url)">
+                       <i class="icon iconfont menu-item-icon" :class="item.icon"></i>
                         <span slot="title">{{i.name}}</span>
                     </el-menu-item>
-                </el-submenu> -->
+                </el-submenu>
 
                 <el-menu-item :key="index" v-if="!item.childrenShow && item.url"  :index="toUrl(item.url)" :class="{'is-active':item.url == defaultActive}">
                     <i class="icon iconfont menu-item-icon" :class="item.icon"></i>
@@ -67,12 +68,21 @@ export default {
     menuItem() {
       let data = [
         {
-          id: 2,
-          name: "应用管理",
-          permissionType: 0,
-          url: "/main/app-list",
+          name: "前端监控",
           icon: "icon-caidanlanyingyongguanli",
-          childrenShow: false
+          childrenShow: true,
+          children: [
+            {
+              name: "应用管理",
+              url: "/main/monitoring/app-list",
+              icon: "icon-caidanlanyingyongguanli",
+            },
+            {
+              name: "错误管理",
+              url: "/main/monitoring/error-list",
+              icon: "icon-caidanlanyingyongguanli",
+            },
+          ]
         },
         {
           id: 2,
@@ -122,9 +132,9 @@ export default {
       }
     }
   },
-  watch:{
-    $route(o,l){
-      this.defaultActive = o.path
+  watch: {
+    $route(o, l) {
+      this.defaultActive = o.path;
     }
   }
 };

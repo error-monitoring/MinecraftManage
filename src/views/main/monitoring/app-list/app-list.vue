@@ -19,7 +19,7 @@
                     </div>    
                     </template>
                 </el-table-column>
-                <el-table-column prop="dapp_key" label="DAppKey">
+                <el-table-column prop="dapp_key" label="AppKey">
 
                 </el-table-column>
                 <el-table-column label="上线状态">
@@ -47,9 +47,9 @@
 </template>
 <script>
 import addApp from "./add-app";
-import mPagination from "../../../components/m-pagination";
-import userApi from "../../../api/user.js";
-import dappApi from "../../../api/app-list.js";
+import mPagination from "@/components/m-pagination";
+import userApi from "../../../../api/user.js";
+import dappApi from "../../../../api/app-list.js";
 export default {
   data() {
     return {
@@ -67,8 +67,7 @@ export default {
     mPagination
   },
   created() {
-    this.getList();
-    this.getUserState();
+    // this.getList();
   },
   methods: {
     async getList() {
@@ -84,27 +83,10 @@ export default {
         this.total = data.total_count;
       }
     },
-    async getUserState() {
-      let { code, data } = await userApi.userInfo();
-      if (code === 0) {
-        this.status = data.status;
-      }
-    },
-    addAPP() {
-      if (this.status != 1) {
-        this.$alert(
-          "您还未对账号进行认证，点击右上角“账号管理”进行认证，认证通过后即可操作管理后台。",
-          "提示",
-          {
-            confirmButtonText: "确定",
 
-            callback: () => {}
-          }
-        );
-      } else {
-        this.drawerShow = true;
+    addAPP() {
+      this.drawerShow = true;
         this.editType = "add";
-      }
     },
     updateSuccess() {},
     saveSuccess() {

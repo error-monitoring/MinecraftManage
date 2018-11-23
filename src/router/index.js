@@ -56,18 +56,27 @@ const router = new Router({
       component: () => import('../components/main.vue'),
       children: [
         {
-          path: 'app-list',
-          name: 'app-list',
-          component: () => import('../views/main/app-list/app-list.vue'),
+          path: 'monitoring/app-list',
+          name: 'monitoring-app-list',
+          component: () => import('../views/main/monitoring/app-list/app-list.vue'),
           meta: {
             title: '应用列表',
             isLogin:true
           }
         },
         {
-          path:'app-info/:id',
-          name:'app-info',
-          component: () => import('../views/main/app-list/app-info.vue'),
+          path: 'monitoring/error-list',
+          name: 'monitoring-error-list',
+          component: () => import('../views/main/monitoring/error-list/error-list.vue'),
+          meta: {
+            title: '错误列表',
+            isLogin:true
+          }
+        },
+        {
+          path:'monitoring-app-info/:id',
+          name:'monitoring-app-info',
+          component: () => import('../views/main/monitoring/app-list/app-info.vue'),
           meta: {
             title: '应用详情',
             isLogin:true

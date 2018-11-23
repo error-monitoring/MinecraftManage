@@ -101,11 +101,11 @@
 </template>
 
 <script>
-import dappApi from "../../../api/app-list.js";
-import mHelp from "../../../components/m-help";
-import { checkUrlFun } from "../../../serving/checkRule.js";
+import dappApi from "../../../../api/app-list.js";
+import mHelp from "../../../../components/m-help";
+import { checkUrlFun } from "../../../../serving/checkRule.js";
 import addApp from "./add-app";
-import storageServing from '../../../serving/storage.serving.js';
+import storageServing from '../../../../serving/storage.serving.js';
 export default {
   data() {
     return {

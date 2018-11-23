@@ -7,18 +7,10 @@
             <el-main class="main-body" ref="mainBody">
 
                 <!-- 面包屑 -->
-                <div class="plate-header flex align-items-center">
+                <!-- <div class="plate-header flex align-items-center">
                     <div class="plate-title">{{title}}</div>
-                    <!-- <div class="plate-line"></div> -->
-                </div>
-                <!-- <plate-header v-if="$route.name !== 'homePage.index'"></plate-header> -->
-                <!-- <el-breadcrumb class="content">
-					<el-breadcrumb-item v-for=" (item,index) in pageData" :key='index'>
-						<router-link :to="{path:item.path}">
-						{{$t(item.name)}}
+                </div> -->
 
-					</el-breadcrumb-item>
-				</el-breadcrumb> -->
                 <!-- 右侧路由 -->
                 <router-view></router-view>
             </el-main>
@@ -68,7 +60,7 @@ export default {
 .container-main{
     height: calc(100% - 60px);
     .main-body{
-        padding: 0 28px 36px 28px;
+        padding: 20px 28px 36px 28px;
     }
 }
 .user-menu-icon {

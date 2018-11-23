@@ -35,14 +35,14 @@
 </template>
 
 <script>
-import mDrawer from "../../../components/m-drawer";
-import mUpload from "../../../components/m-upload";
-import dappApi from '../../../api/app-list.js'
+import mDrawer from "../../../../components/m-drawer";
+import mUpload from "../../../../components/m-upload";
+import dappApi from '../../../../api/app-list.js'
 import {
   checkNameFun,
   checkRequiredFun,
   checkUrlFun
-} from "../../../serving/checkRule.js";
+} from "../../../../serving/checkRule.js";
 
 export default {
   name: "add-app",
@@ -183,7 +183,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../../../assets/css/var.scss';
+@import '../../../../assets/css/var.scss';
 .item-input{
     width: 400px;
 }
