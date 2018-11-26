@@ -30,7 +30,7 @@ class Serving {
     start() {
         this.app.use(this.router.routes()).use(this.router.allowedMethods());
         if(process.env.EVENT == 'dev'){
-            this.app.listen(7404, ip.address());
+            this.app.listen(7404, '0.0.0.0');
         }else{
             this.app.listen(7404, '172.16.100.38');
         }
