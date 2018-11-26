@@ -1,6 +1,6 @@
 <template>
     <div>
-        <G2Line  />
+        <!-- <G2Line  /> -->
         <el-card class="no-border" shadow="always">
             <el-table :data="tableData" style="width: 100%" v-loading="loading">
 
@@ -23,7 +23,7 @@
 <script>
 import mPagination from "@/components/m-pagination";
 import errorApi from "@/api/monitoring/error-list.js";
-import G2Line from '@/components/G2Line'
+// import G2Line from '@/components/G2Line'
 export default {
   data() {
     return {
@@ -38,7 +38,7 @@ export default {
   },
   components: {
     mPagination,
-    G2Line
+    // G2Line
   },
   created() {
     this.getList();

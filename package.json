@@ -11,18 +11,13 @@
     "jenkins-stop": "node ./node_modules/mwjenkins/main.js --zh_cn --fun=stop"
   },
   "dependencies": {
-    "@antv/g2": "^3.4.1",
     "axios": "^0.18.0",
     "date-fns": "^1.29.0",
     "element-ui": "^2.4.9",
-    "highlight.js": "^9.12.0",
     "mwjenkins": "^1.0.6",
-    "text-loader": "^0.0.1",
     "vue": "^2.5.17",
-    "vue-markdown": "^2.2.4",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1",
-    "xss": "^1.0.3"
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0",
