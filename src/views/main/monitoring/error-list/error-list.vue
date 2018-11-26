@@ -4,7 +4,11 @@
         <el-card class="no-border" shadow="always">
             <el-table :data="tableData" style="width: 100%" v-loading="loading">
 
-                <el-table-column prop="dapp_key" label="DAppKey">
+                <el-table-column prop="error_url" label="地址">
+                </el-table-column>
+                <el-table-column prop="send_error" label="类型">
+                </el-table-column>
+                <el-table-column prop="created_at" label="时间">
                 </el-table-column>
                 <el-table-column width="150" label="操作">
                     <template slot-scope="scope">
@@ -18,8 +22,7 @@
 </template>
 <script>
 import mPagination from "@/components/m-pagination";
-import userApi from "../../../../api/user.js";
-import dappApi from "../../../../api/app-list.js";
+import errorApi from "@/api/monitoring/error-list.js";
 import G2Line from '@/components/G2Line'
 export default {
   data() {
@@ -38,7 +41,7 @@ export default {
     G2Line
   },
   created() {
-    // this.getList();
+    this.getList();
   },
   methods: {
     async getList() {
@@ -47,11 +50,11 @@ export default {
         page_number: this.pageVaule.page_number || 1,
         page_size: this.pageVaule.page_size || 10
       };
-      const { code, data } = await dappApi.list(params);
+      const { code, data } = await errorApi.list(params);
       if (code == 0) {
         this.loading = false;
         this.tableData = data.list;
-        this.total = data.total_count;
+        this.total = data.count;
       }
     },
 

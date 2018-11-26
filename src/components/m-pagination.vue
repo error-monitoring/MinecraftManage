@@ -55,7 +55,7 @@
     data() {
       return {
         page_number: 1,
-        page_size: 20,
+        page_size: 10,
       }
     },
     mounted() {

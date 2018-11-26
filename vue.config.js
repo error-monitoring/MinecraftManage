@@ -11,6 +11,9 @@ module.exports = {
             }
         }
     },
+    devServer: {
+        proxy: 'http://192.168.255.162:7001'
+      },
     chainWebpack: config => {
         config.module
         .rule('text')
