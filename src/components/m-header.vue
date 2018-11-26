@@ -9,20 +9,20 @@
       <span class="header-menu-text">Minecraft</span>
     </div> 
     <a class="header-menu menu-a" @click="toUrl('home')"> 首页</a>
-    <div class="header-menu menu-btn" @click="toUrl('login')" v-if="!user.phone_number">
+    <div class="header-menu menu-btn" @click="toUrl('login')" v-if="!user.email">
       登录
     </div>
   
-    <el-dropdown trigger="click" @command="changeCommand" class="dropdown" v-if="user.phone_number">
-      <span class="el-dropdown-link">{{user.phone_number}}<i class="el-icon-arrow-down el-icon--right"></i>
+    <el-dropdown trigger="click" @command="changeCommand" class="dropdown" v-if="user.email">
+      <span class="el-dropdown-link">{{user.email}}<i class="el-icon-arrow-down el-icon--right"></i>
           </span>
       <el-dropdown-menu slot="dropdown">
-        <el-dropdown-item command="account-center" divided class="main-dropdown-item flex align-items-center header-logout">
+        <!-- <el-dropdown-item command="account-center" divided class="main-dropdown-item flex align-items-center header-logout">
           <i class="iconfont icon-zhanghaoguanli user-menu-icon"></i> 账号管理
         </el-dropdown-item>
         <el-dropdown-item command="change-password" divided class="main-dropdown-item flex align-items-center header-logout">
           <i class="iconfont icon-xiugaimima user-menu-icon"></i> 修改密码
-        </el-dropdown-item>
+        </el-dropdown-item> -->
   
         <el-dropdown-item command="out" divided class="main-dropdown-item flex align-items-center header-logout">
           <i class="iconfont icon-ic_tiaozhuan user-menu-icon"></i> 退出账号

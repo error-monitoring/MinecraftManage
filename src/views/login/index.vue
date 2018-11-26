@@ -25,8 +25,8 @@
             Minecraft
           </div>
           <el-form label-position="top" label-width="0" :rules="rule_data" :model="updata" ref="updata">
-            <el-form-item label="手机号" prop="phone_number">
-              <el-input  placeholder="请输入手机号" auto-complete="off" v-model="updata.phone_number">
+            <el-form-item label="邮箱" prop="email">
+              <el-input  placeholder="请输入邮箱" auto-complete="off" v-model="updata.email">
   
               </el-input>
             </el-form-item>
@@ -55,24 +55,24 @@
 
 <script>
 import userApi from '../../api/user';
-import { checkPhoneFun, checkPasswordFun } from '../../serving/checkRule';
+import { checkPasswordFun, checkEmailFun } from '../../serving/checkRule';
 export default {
   name: "login",
   components: {},
   data() {
     return {
       updata: {
-        phone_number: "",
+        email: "",
         password: ""
       },
       loading: false,
       // 验证
       rule_data: {
-        phone_number: [
+        email: [
           {
             required: true,
-            validator: checkPhoneFun,
-            name:'手机号',
+            validator: checkEmailFun,
+            name:'邮箱',
             trigger: "blur"
           }
         ],
@@ -108,18 +108,13 @@ export default {
     // 触发登录
     async goLogin() {
       this.loading = true;
-      let params = {
-        phone_number: this.updata.phone_number,
-        password: this.updata.password
-      };
-      const { data, code, message } = await userApi.login(params);
+      const { data, code, message } = await userApi.login(this.updata);
       this.loading = false;
       if (code == 0) {
         this.$storage.set(data.token, "token");
-        this.$store.commit('setUserInfo', data.user_info)
-        this.$store.commit('setUserStatus', data.user_info.status)
+        this.$store.commit('setUserInfo', data.user)
         this.$router.push({
-          name: "app-list",
+          name: "monitoring-app-list",
         });
       } else {
         this.$message.error(message);

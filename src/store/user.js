@@ -18,10 +18,5 @@ export default {
         setUserStatus(state, data){
             state.status =data
         }
-    },
-    // actions: {
-    //     changeLong(store, data) {
-    //         store.commit("setLang", data)
-    //     }
-    // }
+    }
 }

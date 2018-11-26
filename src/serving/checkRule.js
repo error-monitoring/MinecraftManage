@@ -111,7 +111,7 @@ const checkCardFun = (rule, value, callback, ) => {
 // 检查密码
 
 const checkPasswordFun = (rule, value, callback) => {
-    const min = rule.min || 8;
+    const min = rule.min || 6;
     const max = rule.min || 20;
     if (value.trim() == "") {
         callback(new Error("请输入密码"));
