@@ -7,7 +7,7 @@
     "prod-cn": "NODE_ENV=production NODE_EVENT=prod vue-cli-service build --mode production",
     "test-cn": "NODE_ENV=production NODE_EVENT=test vue-cli-service build  --mode development",
     "lint": "vue-cli-service lint",
-    "jenkins": "node ./node_modules/mwjenkins/main.js --zh_cn",
+    "jenkins": "curl http://47.98.132.24:7404/api/build",
     "jenkins-stop": "node ./node_modules/mwjenkins/main.js --zh_cn --fun=stop"
   },
   "dependencies": {

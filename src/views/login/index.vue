@@ -22,7 +22,7 @@
       <div class="login-r">
         <div class="login-wrap">
           <div class="logo-text">
-            Minecraft
+            Minecraft11
           </div>
           <el-form label-position="top" label-width="0" :rules="rule_data" :model="updata" ref="updata">
             <el-form-item label="邮箱" prop="email">
