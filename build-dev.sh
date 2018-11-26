@@ -1,2 +1,2 @@
 git pull
-yarn build
+yarn test-cn
