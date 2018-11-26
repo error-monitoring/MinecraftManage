@@ -5,10 +5,7 @@
             "script": "serving.js",
             "watch": "true",
             "exec_mode" : "cluster",
-            "log_date_format": "YYYY-MM-DD HH:mm Z",
-            "env": {
-                "PORT": 80
-            }
+            "log_date_format": "YYYY-MM-DD HH:mm Z"
         }
     ]
 }
