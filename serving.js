@@ -34,7 +34,7 @@ class Serving {
         }else{
             this.app.listen(7404, '172.16.100.38');
         }
-        console.log(`服务启动成功 http://${ip.address()}:7404`)
+        console.log(`服务启动成功 http://0.0.0.0:7404`)
     }
 
 }
