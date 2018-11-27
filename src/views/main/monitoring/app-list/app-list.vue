@@ -74,6 +74,12 @@ export default {
       const { code, data } = await dappApi.list(params);
       if (code == 0) {
         this.loading = false;
+        let list = data.list;
+        list.forEach(item => {
+          item.monitoring_code= JSON.parse(item.monitoring_code);
+          item.monitoring_urls= JSON.parse(item.monitoring_urls);
+          item.source_map_url= JSON.parse(item.source_map_url);
+        });
         this.tableData = data.list;
         this.total = data.count;
       }
