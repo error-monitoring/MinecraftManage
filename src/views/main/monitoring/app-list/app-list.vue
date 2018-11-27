@@ -11,26 +11,21 @@
             </template>
             <el-table :data="tableData" style="width: 100%" v-loading="loading">
 
-                <el-table-column  label="应用名称">
-                  <template slot-scope="scope">
-                    <div class="item—img">
-                      <img  :src="scope.row.dapp_icon_url" alt="">
-                          <span>{{scope.row.dapp_name}}</span>
-                    </div>    
-                    </template>
+                <el-table-column prop="name"  label="应用名称">
+                 
                 </el-table-column>
-                <el-table-column prop="dapp_key" label="AppKey">
+                <el-table-column prop="app_key" label="AppKey">
 
                 </el-table-column>
-                <el-table-column label="上线状态">
-                    <template slot-scope="scope">
-                      <!-- 1 开发中、2 审核中、3 审核未通过、4 上线、5 下线 -->
-                            <el-tag size="small" v-if="scope.row.status==1" type="secondary">开发中</el-tag>
-                            <el-tag size="small" v-if="scope.row.status==2" type="warning">审核中</el-tag>
-                            <el-tag size="small" v-if="scope.row.status==3" type="danger">审核未通过</el-tag>
-                            <el-tag size="small" v-if="scope.row.status==4" type="success" >上线</el-tag>
-                            <el-tag size="small" v-if="scope.row.status==5" type="info">下线</el-tag>
-                    </template>
+                <el-table-column prop="monitoring_code" label="CODE">
+                  
+                </el-table-column>
+                <el-table-column prop="monitoring_urls" label="URL">
+                  
+                </el-table-column>
+
+                <el-table-column prop="source_map_url" label="下载地址">
+                  
                 </el-table-column>
 
                 <el-table-column width="150" label="操作">
@@ -49,7 +44,7 @@
 import addApp from "./add-app";
 import mPagination from "@/components/m-pagination";
 import userApi from "../../../../api/user.js";
-import dappApi from "../../../../api/app-list.js";
+import dappApi from "../../../../api/monitoring/app.js";
 export default {
   data() {
     return {
@@ -67,7 +62,7 @@ export default {
     mPagination
   },
   created() {
-    // this.getList();
+    this.getList();
   },
   methods: {
     async getList() {
@@ -80,13 +75,13 @@ export default {
       if (code == 0) {
         this.loading = false;
         this.tableData = data.list;
-        this.total = data.total_count;
+        this.total = data.count;
       }
     },
 
     addAPP() {
       this.drawerShow = true;
-        this.editType = "add";
+      this.editType = "add";
     },
     updateSuccess() {},
     saveSuccess() {

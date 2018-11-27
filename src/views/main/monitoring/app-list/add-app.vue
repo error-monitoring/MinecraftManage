@@ -3,25 +3,21 @@
     <div>
         <m-drawer :visible.sync="show" :title="editType === 'add' ? '添加应用' : '编辑应用'" @open="handleOpen">
             <el-form v-if="show" label-position="top" :model="formData" :rules="rule" status-icon ref="ruleForm">
-                <el-form-item label="应用名称" prop="dapp_name">
-                    <el-input class="item-input" auto-complete="off" placeholder="应用名称" v-model="formData.dapp_name" >
+                <el-form-item label="应用名称" prop="name">
+                    <el-input class="item-input" auto-complete="off" placeholder="应用名称" v-model="formData.name" >
                     </el-input>
                 </el-form-item>
-                <p class="upload-img-text"><span>*</span> 应用ICON</p>
-                <el-row>
-                    <el-col :span="10" :offset="0">
-                        <el-form-item prop="dapp_icon_url" class="mw-form-validation mw-is-flex">
-                            <m-upload v-model="formData.dapp_icon_url"></m-upload>
-                        </el-form-item>
-                    </el-col>
-                </el-row>
-                <p class="info">建议尺寸200*200PX，大小不超过3M，支持PNG和JPG格式</p>
-                <el-form-item label="应用官网" prop="dapp_official_website">
-                    <el-input class="item-input" auto-complete="off" placeholder="请输入以https://或者http://开头的应用官网" v-model="formData.dapp_official_website">
+               
+                <el-form-item label="应用官网" prop="monitoring_urls">
+                    <el-input class="item-input" auto-complete="off" placeholder="请输入以https://或者http://开头的应用官网" v-model="formData.monitoring_urls">
                     </el-input>
                 </el-form-item>
-                <el-form-item label="应用简介" prop="dapp_intro" >
-                    <el-input class="item-input" :autosize="{ minRows: 4, maxRows: 6}" type="textarea" placeholder="50个字内。" v-model="formData.dapp_intro">
+                <el-form-item label="监控Code" prop="monitoring_code" >
+                    <el-input class="item-input"   placeholder="code" v-model="formData.monitoring_code">
+                    </el-input>
+                </el-form-item>
+                <el-form-item label="下载地址" prop="source_map_url" >
+                    <el-input class="item-input"   placeholder="code" v-model="formData.source_map_url">
                     </el-input>
                 </el-form-item>
     
@@ -37,7 +33,7 @@
 <script>
 import mDrawer from "../../../../components/m-drawer";
 import mUpload from "../../../../components/m-upload";
-import dappApi from '../../../../api/app-list.js'
+import dappApi from "../../../../api/monitoring/app.js";
 import {
   checkNameFun,
   checkRequiredFun,
@@ -67,17 +63,13 @@ export default {
   data() {
     return {
       formData: {
-        //   应用名称
-        dapp_name: "",
-        // 应用icon
-        dapp_icon_url: "",
-        // 应用官网
-        dapp_official_website: "",
-        // 应用简介
-        dapp_intro: ""
+        name: "",
+        monitoring_code: "",
+        monitoring_urls: "",
+        source_map_url: ""
       },
       rule: {
-        dapp_name: [
+        name: [
           {
             required: true,
             validator: checkNameFun,
@@ -85,27 +77,28 @@ export default {
             trigger: "blur"
           }
         ],
-        dapp_icon_url: [
+        source_map_url: [
           {
             required: true,
-            validator: checkRequiredFun,
-            name: "请上传应用icon",
+            validator: checkNameFun,
+            name: "下载地址",
             trigger: "blur"
           }
         ],
-        dapp_official_website:[
+        
+        monitoring_urls:[
             {
+            required: true,
             validator: checkUrlFun,
             name: "应用官网",
             trigger: "blur"
           }
         ],
-        dapp_intro: [
+        monitoring_code: [
           {
             required: true,
             validator: checkNameFun,
-            max:50,
-            name: "应用简介",
+            name: "CODE",
             trigger: "blur"
           }
         ]
@@ -130,11 +123,12 @@ export default {
   methods: {
     handleOpen() {},
 
+
     // 保存app
-    async saveApp(){
-      const {code,message} = await dappApi.add(this.formData)
+    async create(){
+      const {code,message} = await dappApi.create(this.formData)
       if(code == 0){
-        this.$message.success('成功')
+        this.$message.success('创建成功')
         this.$emit('saveSuccess')
         this.cancel()
       }else{
@@ -160,7 +154,7 @@ export default {
         if (valid) {
             
           if(this.editType=='add'){
-              this.saveApp();
+              this.create();
           }else{
               this.updateApp();
           }

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "vue-cli-service serve NODE_EVENT=local --mode development",
+    "dev": "NODE_EVENT=local vue-cli-service serve --mode development",
     "prod-cn": "NODE_ENV=production NODE_EVENT=prod vue-cli-service build --mode production",
     "test-cn": "NODE_ENV=production NODE_EVENT=test vue-cli-service build  --mode development",
     "lint": "vue-cli-service lint",
