@@ -43,7 +43,6 @@
 <script>
 import addApp from "./add-app";
 import mPagination from "@/components/m-pagination";
-import userApi from "../../../../api/user.js";
 import dappApi from "../../../../api/monitoring/app.js";
 export default {
   data() {

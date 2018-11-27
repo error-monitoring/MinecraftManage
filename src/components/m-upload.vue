@@ -55,7 +55,9 @@ export default {
          // eslint-disable-next-line
         try {
           this.$parent.$parent.$parent.validates();
-        } catch (e) {}
+        } catch (e) {
+          console.log(e);
+        }
       }
     },
     beforeAvatarUpload(file) {

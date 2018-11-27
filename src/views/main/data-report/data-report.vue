@@ -5,7 +5,7 @@
     </div>
 </template>
 <script>
-import user from '../../../api/user.js'
+// import user from '../../../api/user.js'
 export default {
     created(){
     }
