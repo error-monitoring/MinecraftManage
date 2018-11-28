@@ -17,20 +17,15 @@
                 <el-table-column prop="app_key" label="AppKey">
 
                 </el-table-column>
-                <el-table-column prop="monitoring_code" label="CODE">
+                <el-table-column prop="monitoring_code" label="监控CODE">
                   
                 </el-table-column>
-                <el-table-column prop="monitoring_urls" label="URL">
-                  
-                </el-table-column>
-
-                <el-table-column prop="source_map_url" label="下载地址">
+                <el-table-column prop="monitoring_urls" label="监控地址">
                   
                 </el-table-column>
 
                 <el-table-column width="150" label="操作">
                     <template slot-scope="scope">
-                        <!-- <el-button type="text">调试工具</el-button> -->
                         <el-button size="mini" type="primary" @click="goInfo(scope.row)">查看</el-button>
                     </template>
                 </el-table-column>
@@ -43,7 +38,7 @@
 <script>
 import addApp from "./add-app";
 import mPagination from "@/components/m-pagination";
-import dappApi from "../../../../api/monitoring/app.js";
+import dappApi from "@/api/monitoring/app.js";
 export default {
   data() {
     return {
@@ -73,12 +68,6 @@ export default {
       const { code, data } = await dappApi.list(params);
       if (code == 0) {
         this.loading = false;
-        let list = data.list;
-        list.forEach(item => {
-          item.monitoring_code= JSON.parse(item.monitoring_code);
-          item.monitoring_urls= JSON.parse(item.monitoring_urls);
-          item.source_map_url= JSON.parse(item.source_map_url);
-        });
         this.tableData = data.list;
         this.total = data.count;
       }
@@ -93,7 +82,7 @@ export default {
       this.getList();
     },
     goInfo({ id }) {
-      this.$router.push({ name: "app-info", params: { id } });
+      this.$router.push({ name: "monitoring-app-info", params: { id } });
     }
   }
 };

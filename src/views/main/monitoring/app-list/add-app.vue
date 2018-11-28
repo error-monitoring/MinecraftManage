@@ -1,44 +1,56 @@
 
 <template>
-    <div>
-        <m-drawer :visible.sync="show" :title="editType === 'add' ? '添加应用' : '编辑应用'" @open="handleOpen">
-            <el-form v-if="show" label-position="top" :model="formData" :rules="rule" status-icon ref="ruleForm">
-                <el-form-item label="应用名称" prop="name">
-                    <el-input class="item-input" auto-complete="off" placeholder="应用名称" v-model="formData.name" >
-                    </el-input>
-                </el-form-item>
-               
-                <el-form-item label="应用官网" prop="monitoring_urls">
-                    <el-input class="item-input" auto-complete="off" placeholder="请输入以https://或者http://开头的应用官网" v-model="formData.monitoring_urls">
-                    </el-input>
-                </el-form-item>
-                <el-form-item label="监控Code" prop="monitoring_code" >
-                    <el-input class="item-input"   placeholder="code" v-model="formData.monitoring_code">
-                    </el-input>
-                </el-form-item>
-                <el-form-item label="下载地址" prop="source_map_url" >
-                    <el-input class="item-input"   placeholder="code" v-model="formData.source_map_url">
-                    </el-input>
-                </el-form-item>
-    
-            </el-form>
-            <template slot="footer">
-                <el-button size="medium" type="info" plain @click="cancel">返回</el-button>
-                <el-button size="medium" type="primary" class="save" @click="onSubmit">创建</el-button>
-            </template>
-        </m-drawer>
-    </div>
+  <div>
+    <m-drawer :visible.sync="show" :title="editType === 'add' ? '添加应用' : '编辑应用'" @open="handleOpen">
+      <el-form
+        v-if="show"
+        label-position="top"
+        :model="formData"
+        :rules="rule"
+        status-icon
+        ref="ruleForm"
+      >
+        <el-form-item label="应用名称" prop="name">
+          <el-input
+            class="item-input"
+            auto-complete="off"
+            placeholder="应用名称"
+            v-model="formData.name"
+          ></el-input>
+        </el-form-item>
+
+        <el-form-item label="监控地址" prop="monitoring_urls">
+          <el-input
+            class="item-input"
+            auto-complete="off"
+            placeholder="请输入以https://或者http://开头的地址"
+            v-model="formData.monitoring_urls"
+          ></el-input>
+        </el-form-item>
+        <el-form-item label="监控Code" prop="monitoring_code">
+          <el-input class="item-input" placeholder="code" v-model="formData.monitoring_code"></el-input>
+        </el-form-item>
+        <el-form-item label="SourceMapUrl" prop="source_map_url">
+          <el-input class="item-input" placeholder="code" v-model="formData.source_map_url"></el-input>
+        </el-form-item>
+      </el-form>
+      <template slot="footer">
+        <el-button size="medium" type="info" plain @click="cancel">返回</el-button>
+        <el-button size="medium" type="primary" class="save" @click="onSubmit">创建</el-button>
+      </template>
+    </m-drawer>
+  </div>
 </template>
 
 <script>
-import mDrawer from "../../../../components/m-drawer";
-import mUpload from "../../../../components/m-upload";
-import dappApi from "../../../../api/monitoring/app.js";
+import mDrawer from "@/components/m-drawer";
+import mUpload from "@/components/m-upload";
+import dappApi from "@/api/monitoring/app.js";
 import {
   checkNameFun,
   checkRequiredFun,
   checkUrlFun
-} from "../../../../serving/checkRule.js";
+} from "@/serving/checkRule.js";
 
 export default {
   name: "add-app",
@@ -56,8 +68,8 @@ export default {
       type: String,
       default: "add"
     },
-    editDate:{
-      type:Object
+    editDate: {
+      type: Object
     }
   },
   data() {
@@ -85,9 +97,9 @@ export default {
             trigger: "blur"
           }
         ],
-        
-        monitoring_urls:[
-            {
+
+        monitoring_urls: [
+          {
             required: true,
             validator: checkUrlFun,
             name: "应用官网",
@@ -117,34 +129,32 @@ export default {
       set: function(v) {
         this.$emit("update:drawerShow", v);
       }
-    },
-
+    }
   },
   methods: {
     handleOpen() {},
 
-
     // 保存app
-    async create(){
-      const {code,message} = await dappApi.create(this.formData)
-      if(code == 0){
-        this.$message.success('创建成功')
-        this.$emit('saveSuccess')
-        this.cancel()
-      }else{
-        this.$message.error(message)
+    async create() {
+      const { code, message } = await dappApi.create(this.formData);
+      if (code == 0) {
+        this.$message.success("创建成功");
+        this.$emit("saveSuccess");
+        this.cancel();
+      } else {
+        this.$message.error(message);
       }
     },
 
     // 修改app
-    async updateApp(){
-      const {code,message} = await dappApi.edit(this.formData)
-      if(code == 0){
-        this.$message.success('成功')
-        this.$emit('saveSuccess')
-        this.cancel()
-      }else{
-        this.$message.error(message)
+    async updateApp() {
+      const { code, message } = await dappApi.edit(this.formData);
+      if (code == 0) {
+        this.$message.success("成功");
+        this.$emit("saveSuccess");
+        this.cancel();
+      } else {
+        this.$message.error(message);
       }
     },
 
@@ -152,24 +162,23 @@ export default {
     onSubmit() {
       this.$refs.ruleForm.validate(valid => {
         if (valid) {
-            
-          if(this.editType=='add'){
-              this.create();
-          }else{
-              this.updateApp();
+          if (this.editType == "add") {
+            this.create();
+          } else {
+            this.updateApp();
           }
         }
       });
     },
     cancel() {
-       this.$refs["ruleForm"].resetFields();
+      this.$refs["ruleForm"].resetFields();
       this.$emit("update:drawerShow", false);
     }
   },
-  watch:{
-    editDate(old){
-      if(this.editType == 'edit'){
-        this.formData = old
+  watch: {
+    editDate(old) {
+      if (this.editType == "edit") {
+        this.formData = old;
       }
     }
   }
@@ -177,9 +186,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-@import '../../../../assets/css/var.scss';
-.item-input{
-    width: 400px;
+@import "@/assets/css/var.scss";
+.item-input {
+  width: 400px;
 }
 .upload-img-text {
   font-size: 14px;

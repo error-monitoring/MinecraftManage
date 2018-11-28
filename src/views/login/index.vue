@@ -22,7 +22,7 @@
       <div class="login-r">
         <div class="login-wrap">
           <div class="logo-text">
-            Minecraft11
+            Minecraft
           </div>
           <el-form label-position="top" label-width="0" :rules="rule_data" :model="updata" ref="updata">
             <el-form-item label="邮箱" prop="email">
@@ -62,8 +62,8 @@ export default {
   data() {
     return {
       updata: {
-        email: "",
-        password: ""
+        email: "wenquan.huang@merculet.io",
+        password: "123456"
       },
       loading: false,
       // 验证

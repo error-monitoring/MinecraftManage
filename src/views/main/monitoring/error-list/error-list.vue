@@ -2,6 +2,14 @@
     <div>
         <!-- <G2Line  /> -->
         <el-card class="no-border" shadow="always">
+            <template slot="header">
+                <div>
+                    <span>错误列表</span>
+                </div> 
+                <div>
+                    <!-- <el-button size="medium"  type="success" icon="icon iconfont icon-plus-circle" @click="addAPP">添加应用</el-button> -->
+                </div>
+            </template>
             <el-table :data="tableData" style="width: 100%" v-loading="loading">
 
                 <el-table-column prop="error_url" label="地址">
