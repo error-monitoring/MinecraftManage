@@ -13,6 +13,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "date-fns": "^1.29.0",
+    "element-ui": "^2.4.11",
     "koa": "^2.6.2",
     "koa-router": "^7.4.0",
     "mwjenkins": "^1.0.6",
