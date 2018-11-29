@@ -13,7 +13,7 @@
             </div>
           </div>
           <div class="tab-wrap">
-            <img src="@/assets/images/login/img1.png" alt="">
+            <img src="http://piyar362w.bkt.clouddn.com/img1.png" alt="">
           </div>
         </div>
       </div>
