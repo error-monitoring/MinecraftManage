@@ -11,10 +11,10 @@ module.exports = {
     }
   },
   configureWebpack: config => {
-    config.externals = {
-      vue: "Vue",
-      "element-ui": "ELEMENT"
-    };
+    // config.externals = {
+    //   vue: "Vue",
+    //   "element-ui": "ELEMENT"
+    // };
   },
   devServer: {
     proxy: "http://127.0.0.1:7001"
