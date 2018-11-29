@@ -68,6 +68,10 @@ export default {
       type: String,
       default: "add"
     },
+    id: {
+      type: Number,
+      default: null
+    },
     editDate: {
       type: Object
     }
@@ -132,7 +136,29 @@ export default {
     }
   },
   methods: {
-    handleOpen() {},
+    handleOpen() {
+      if(this.editType=='add'){
+        this.formData= {
+          name: "",
+          monitoring_code: "",
+          monitoring_urls: "",
+          source_map_url: ""
+        }
+      }else{
+        console.log(this.id);
+        this.detail(this.id);
+      }
+    },
+    async detail(id) {
+      let params={
+        id:id
+      }
+     
+      const { code, data } = await dappApi.detail(params);
+      if (code == 0) {
+        this.formData=data;
+      }
+    },
 
     // 保存app
     async create() {
@@ -148,7 +174,9 @@ export default {
 
     // 修改app
     async updateApp() {
-      const { code, message } = await dappApi.edit(this.formData);
+      let parms= this.formData;
+      parms.id=this.id;
+      const { code, message } = await dappApi.update(parms);
       if (code == 0) {
         this.$message.success("成功");
         this.$emit("saveSuccess");

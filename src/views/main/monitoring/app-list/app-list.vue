@@ -26,13 +26,14 @@
 
                 <el-table-column width="150" label="操作">
                     <template slot-scope="scope">
-                        <el-button size="mini" type="primary" @click="goInfo(scope.row)">查看</el-button>
+                        <!-- <el-button size="mini" type="primary" @click="goInfo(scope.row)">查看</el-button> -->
+                        <el-button size="mini" type="primary" @click="edit(scope.row)">修改</el-button>
                     </template>
                 </el-table-column>
             </el-table>
             <m-pagination :action="getList" v-model="pageVaule" :total="total"></m-pagination>
         </el-card>
-        <add-app  edit-type="add" :drawer-show.sync="drawerShow"  @saveSuccess="saveSuccess"></add-app>
+        <add-app  :edit-type="editType" :id="id" :drawer-show.sync="drawerShow"  @saveSuccess="saveSuccess"></add-app>
     </div>
 </template>
 <script>
@@ -48,7 +49,8 @@ export default {
       status: "",
       pageVaule: {},
       total: 0,
-      loading: false
+      loading: false,
+      id:null,
     };
   },
   components: {
@@ -59,6 +61,13 @@ export default {
     this.getList();
   },
   methods: {
+    edit(row){
+      this.editType="edit";
+      this.id=row.id;
+      this.drawerShow = true;
+      
+    },
+    
     async getList() {
       this.loading = true;
       let params = {
