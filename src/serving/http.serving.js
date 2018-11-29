@@ -44,9 +44,9 @@ axios.interceptors.response.use(
     return Promise.reject(err);
   });
 class Http {
-  constructor(url = urlBase) {
+  constructor() {
 
-    axios.defaults.baseURL = url
+    // axios.defaults.baseURL = url
 
     axios.defaults.timeout = 100000
 
