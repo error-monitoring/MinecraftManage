@@ -2,16 +2,14 @@
 
   <el-header class="flex end align-items-center">
     <div class="header-left flex align-items-center">
-      <div class="header-logo" @click="toUrl('home')">
+      <div class="header-logo" >
         <img src="../assets/images/login/logo.png" alt="">
       </div>
       <span class="header-menu-line"></span>
       <span class="header-menu-text">Minecraft</span>
     </div> 
-    <a class="header-menu menu-a" @click="toUrl('home')"> 首页</a>
-    <div class="header-menu menu-btn" @click="toUrl('login')" v-if="!user.email">
-      登录
-    </div>
+    <!-- <a class="header-menu menu-a" @click="toUrl('home')"> 首页</a> -->
+
   
     <el-dropdown trigger="click" @command="changeCommand" class="dropdown" v-if="user.email">
       <span class="el-dropdown-link">{{user.email}}<i class="el-icon-arrow-down el-icon--right"></i>
