@@ -48,6 +48,7 @@ ul {
   margin: 0;
   padding: 30px 0;
   border-radius: 5px;
+  overflow-y: auto;
 }
 li {
   list-style: none;
