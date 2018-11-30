@@ -20,7 +20,7 @@
                 </el-table-column>
                 <el-table-column width="150" label="操作">
                     <template slot-scope="scope">
-                        <el-button size="mini" type="primary" >查看</el-button>
+                        <el-button size="mini" type="primary" @click="goInfo(scope.row)" >查看</el-button>
                     </template>
                 </el-table-column>
             </el-table>
@@ -65,6 +65,10 @@ export default {
         this.total = data.count;
       }
     },
+
+    goInfo({ id }) {
+      this.$router.push({ name: "monitoring-error-info", params: { id } });
+    }
 
   }
 };

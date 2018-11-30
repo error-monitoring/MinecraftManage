@@ -8,6 +8,13 @@ import ElementUI from 'element-ui'
 
 
 Vue.config.productionTip = false
+Vue.directive('highlight',function (el) {
+  let blocks = el.querySelectorAll('pre code');
+  blocks.forEach((block)=>{
+    hljs.highlightBlock(block)
+  })
+})
+
 
 
 Vue.use(ElementUI)

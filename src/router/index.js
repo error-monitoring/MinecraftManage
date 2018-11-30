@@ -74,6 +74,16 @@ const router = new Router({
           }
         },
         {
+          path:'monitoring-error-info/:id',
+          name:'monitoring-error-info',
+          component: () => import('../views/main/monitoring/error-list/error-info.vue'),
+          meta: {
+            title: '错误详情',
+            isLogin:true
+          }
+        },
+
+        {
           path:'monitoring-app-info/:id',
           name:'monitoring-app-info',
           component: () => import('../views/main/monitoring/app-list/app-info.vue'),
