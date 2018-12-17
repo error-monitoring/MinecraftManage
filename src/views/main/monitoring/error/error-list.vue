@@ -2,7 +2,7 @@
  * @Author: wenquan.huang 
  * @Date: 2018-12-17 14:40:23 
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-12-17 17:34:42
+ * @Last Modified time: 2018-12-17 17:52:20
  */
 
 <template>
@@ -33,16 +33,17 @@ export default {
   methods: {
     freeze(obj) {
       Object.freeze(obj);
+      
       if (obj instanceof Array) {
         obj.forEach(item => {
-          if (typeof value === "object") {
-            this.freeze(value);
+          if (typeof item === "object") {
+            this.freeze(item);
           }
         })
       } else if (obj instanceof Object) {
-        Object.values(obj).forEach((value, index) => {
-          if (typeof value === "object") {
-            this.freeze(value);
+        Object.values(obj).forEach((item) => {
+          if (typeof item === "object") {
+            this.freeze(item);
           }
         });
       }
@@ -55,16 +56,15 @@ export default {
       };
       const { code, data } = await this.$monitoringError.errorList(params);
       if (code == 0) {
-        this.freeze(data);
-
-
-        this.list = data.list.map(item => {
+        data.list = data.list.map(item => {
           item.brower_info = JSON.parse(item.brower_info);
           item.os_info = JSON.parse(item.os_info);
           item.created_at = format(item.created_at, "MM-DD hh:mm:ss");
           return item;
         });
-        console.log(this.list);
+        this.freeze(data.list);
+        this.list = data.list
+        console.log(this.list,'2221');
       }
     },
     handleClick(tab, event) {
