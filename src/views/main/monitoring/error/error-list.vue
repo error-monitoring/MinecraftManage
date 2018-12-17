@@ -2,17 +2,31 @@
  * @Author: wenquan.huang 
  * @Date: 2018-12-17 14:40:23 
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-12-17 17:52:20
+ * @Last Modified time: 2018-12-17 20:13:07
  */
 
 <template>
   <div class="error-list">
     <div class="left">
-      <div class="item" v-for="(item, index) in list" :key="index">{{item.id}}</div>
+      <div
+        class="item"
+        v-for="(item, index) in list"
+        :key="index"
+        :class="{active:index == active}"
+        @click="clickItem(item, index)"
+      >
+        <div class="item-top">
+          <span>日期:{{item.created_at}}</span>
+        </div>
+        <div class="item-info">
+          <span>系统:{{item.os_info.os_name}}</span>
+          <span>浏览器:{{item.brower_info.browser_type}}</span>
+        </div>
+      </div>
     </div>
     <div class="right">
-      <el-tabs v-model="activeName2" type="card" @tab-click="handleClick">
-        <el-tab-pane label="基本信息" name="first">基本信息</el-tab-pane>
+      <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
+        <el-tab-pane label="基本信息" name="info">基本信息</el-tab-pane>
       </el-tabs>
     </div>
   </div>
@@ -23,31 +37,16 @@ import { format } from "date-fns";
 export default {
   data() {
     return {
-      activeName2: "first",
+      activeName: "info",
+      active: 0,
       list: []
     };
   },
-  created() {
-    this.getList();
+  async created() {
+    await this.getList();
+    this.getDateils()
   },
   methods: {
-    freeze(obj) {
-      Object.freeze(obj);
-      
-      if (obj instanceof Array) {
-        obj.forEach(item => {
-          if (typeof item === "object") {
-            this.freeze(item);
-          }
-        })
-      } else if (obj instanceof Object) {
-        Object.values(obj).forEach((item) => {
-          if (typeof item === "object") {
-            this.freeze(item);
-          }
-        });
-      }
-    },
     async getList() {
       let params = {
         page_number: 1,
@@ -59,13 +58,32 @@ export default {
         data.list = data.list.map(item => {
           item.brower_info = JSON.parse(item.brower_info);
           item.os_info = JSON.parse(item.os_info);
-          item.created_at = format(item.created_at, "MM-DD hh:mm:ss");
+          item.created_at = format(item.created_at, "YYYY-MM-DD HH:mm:ss");
           return item;
         });
-        this.freeze(data.list);
-        this.list = data.list
-        console.log(this.list,'2221');
+        this.$freeze(data.list);
+        this.list = data.list;
       }
+    },
+    async getDateils() {
+      const {id} =  this.list[this.active] 
+      const { code, data } = await this.$monitoringError.getDateils({id});
+      if (code == 0) {
+
+        Object.keys(data).forEach(item => {       
+          try {
+            data[item] = JSON.parse(data[item])
+          } catch (error) {
+            data[item] = data[item]
+          }
+ 
+        })
+        console.log(data)
+      }
+    },
+    clickItem(item, index){
+      this.active = index
+      console.log(item)
     },
     handleClick(tab, event) {
       console.log(tab, event);
@@ -85,6 +103,34 @@ export default {
   .left {
     width: 300px;
     height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+    .item {
+      height: 52px;
+      border-bottom: 1px solid #f8f8f8;
+      border-left: 8px solid #fff;
+      padding: 5px;
+      cursor: pointer;
+      color: #666;
+      .item-top {
+        display: flex;
+        justify-content: space-between;
+      }
+      .item-info {
+        font-size: 14px;
+        margin-top: 5px;
+        & > span {
+          margin-right: 5px;
+        }
+      }
+      &:hover {
+        background: #fbfbfc;
+      }
+      &.active {
+        background: #f0f0f0;
+        border-left: 8px solid #564fc1;
+      }
+    }
   }
   .right {
     height: 100%;

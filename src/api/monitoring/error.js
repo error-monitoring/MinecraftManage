@@ -8,5 +8,5 @@ export default {
 
     errorList: params => http.httpGet(`/api/monitoring/error/list`, params),
     
-    info: params => http.httpGet(`/api/monitoring/listrn-error/details`, params),
+    getDateils: params => http.httpGet(`/api/monitoring/error/details`, params),
 }
