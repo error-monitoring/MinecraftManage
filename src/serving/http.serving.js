@@ -1,57 +1,51 @@
-/* eslint-disable */
-
-/**
- * author 文全
+/*
+ * @Author: wenquan.huang
+ * @Date: 2018-12-17 15:31:01
+ * @Last Modified by: wq599263163@163.com
+ * @Last Modified time: 2018-12-17 15:32:41
  */
 
-import axios from 'axios';
-// import router from '../router/index'
+/* eslint-disable */
 
-import {
-  urlBase
-} from '../config'
-import { Message } from 'element-ui'
+import axios from "axios";
 
-import storage from './storage.serving'
-import LangServing from './lang.serving'
+import { Message } from "element-ui";
+
+import storage from "./storage.serving";
 /**
  * 封装的全局ajax请求
  */
 // http request 拦截器
 axios.interceptors.request.use(
-  (config) => {
-    //debugger;
-    const token = storage.get('token') 
-    if (token) { // 判断是否存在token，如果存在的话，则每个http header都加上token
-      config.headers['m-token'] = `${token}`;
+  config => {
+    const token = storage.get("token");
+    if (token) {
+      // 判断是否存在token，如果存在的话，则每个http header都加上token
+      config.headers["m-token"] = `${token}`;
     }
-    config.headers.locale = LangServing.getLang()
     return config;
   },
   err => {
     return Promise.reject(err);
-  });
-  
-
+  }
+);
 
 axios.interceptors.response.use(
-  (res) => {
+  res => {
     return res;
   },
   err => {
-    Message.error('服务器开了点小差！')
+    Message.error("服务器开了点小差！");
 
     return Promise.reject(err);
-  });
+  }
+);
 class Http {
   constructor() {
-
     // axios.defaults.baseURL = url
 
-    axios.defaults.timeout = 100000
-
+    axios.defaults.timeout = 100000;
   }
-
 
   /**
    * GET 请求 {es6解构赋值}
@@ -60,43 +54,15 @@ class Http {
    * @returns {Promise}
    * @constructor
    */
-  async httpGet(url, resData = {}) {
-    // 创建一个promise对象
-    // resData = Object.assign(resData, this.locale)
+  async httpGet(url, params = {}) {
     try {
-      let {
-        data
-      } = await axios.get(url, {
-        params: resData
+      let { data } = await axios.get(url, {
+        params
       });
       return data;
-    } catch (error) {
-
-    }
-
+    } catch (error) {}
   }
 
-  /**
-     下载
-  */
-  async exportGet(url, resData = {}) {
-    // 创建一个promise对象
-    // resData = Object.assign(resData, this.locale)
-    try {
-      let {
-        data
-      } = await axios({
-        url,
-        method: 'get',
-        params: resData,
-        responseType: 'blob'
-      });
-      return data;
-    } catch (error) {
-
-    }
-
-  }
 
   /**
    * POST 请求
@@ -105,72 +71,12 @@ class Http {
    * @returns {Promise}
    * @constructor
    */
-  async httpPost(url, resData = {}) {
-    // 创建一个promise对象
-
+  async httpPost(url, params = {}) {
     try {
-      // resData = Object.assign(resData, this.locale)
-      let {
-        data
-      } = await axios.post(url, resData);
-      if (data.code == 500) {
-        Message.error('接口异常')
-        console.error(500);
-        //router.push('/')
-      }
+      let { data } = await axios.post(url, params);
       return data;
     } catch (error) {
-      console.log(error)
-    }
-
-  }
-
-
-
-
-
-
-  /**
-   * formDate
-   */
-
-  async formPost(url, resData = {}) {
-    // 创建一个promise对象
-    let formDate = new FormData();
-    for (let i in resData) {
-      formDate.append(i, resData[i])
-    }
-    try {
-      // resData = Object.assign(resData, this.locale)
-      let {
-        data
-      } = await axios.post(
-        url,
-
-        formDate,
-
-        {
-          headers: {
-            'Content-type': 'application/x-www-form-urlencoded'
-          }
-        }
-      );
-      if (data.code == 500) {
-        console.error(500);
-        //router.push('/')
-      }
-      return data;
-    } catch (error) {
-      console.log(error)
-    }
-
-  }
-
-  get locale() {
-    return {
-      locale: "zh"
     }
   }
-
 }
 export default new Http();

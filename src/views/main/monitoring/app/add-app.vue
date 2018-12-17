@@ -44,8 +44,6 @@
 
 <script>
 import mDrawer from "@/components/m-drawer";
-import mUpload from "@/components/m-upload";
-import dappApi from "@/api/monitoring/app.js";
 import {
   checkNameFun,
   checkRequiredFun,
@@ -123,7 +121,6 @@ export default {
   },
   components: {
     mDrawer,
-    mUpload
   },
   computed: {
     show: {
@@ -154,7 +151,7 @@ export default {
         id:id
       }
      
-      const { code, data } = await dappApi.detail(params);
+      const { code, data } = await this.$monitoringApp.detail(params);
       if (code == 0) {
         this.formData=data;
       }
@@ -162,7 +159,7 @@ export default {
 
     // 保存app
     async create() {
-      const { code, message } = await dappApi.create(this.formData);
+      const { code, message } = await this.$monitoringApp.create(this.formData);
       if (code == 0) {
         this.$message.success("创建成功");
         this.$emit("saveSuccess");
@@ -176,7 +173,7 @@ export default {
     async updateApp() {
       let parms= this.formData;
       parms.id=this.id;
-      const { code, message } = await dappApi.update(parms);
+      const { code, message } = await this.$monitoringApp.update(parms);
       if (code == 0) {
         this.$message.success("成功");
         this.$emit("saveSuccess");

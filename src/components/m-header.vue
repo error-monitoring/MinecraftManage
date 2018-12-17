@@ -1,5 +1,11 @@
-<template>
+/*
+ * @Author: wenquan.huang 
+ * @Date: 2018-12-17 14:24:20 
+ * @Last Modified by:   wq599263163@163.com 
+ * @Last Modified time: 2018-12-17 14:24:20 
+ */
 
+<template>
   <el-header class="flex end align-items-center">
     <div class="header-left flex align-items-center">
       <div class="header-logo" >
@@ -15,15 +21,8 @@
       <span class="el-dropdown-link">{{user.email}}<i class="el-icon-arrow-down el-icon--right"></i>
           </span>
       <el-dropdown-menu slot="dropdown">
-        <!-- <el-dropdown-item command="account-center" divided class="main-dropdown-item flex align-items-center header-logout">
-          <i class="iconfont icon-zhanghaoguanli user-menu-icon"></i> 账号管理
-        </el-dropdown-item>
-        <el-dropdown-item command="change-password" divided class="main-dropdown-item flex align-items-center header-logout">
-          <i class="iconfont icon-xiugaimima user-menu-icon"></i> 修改密码
-        </el-dropdown-item> -->
-  
         <el-dropdown-item command="out" divided class="main-dropdown-item flex align-items-center header-logout">
-          <i class="iconfont icon-ic_tiaozhuan user-menu-icon"></i> 退出账号
+          <i class="iconfont icon-tuichu-"></i> 退出账号
         </el-dropdown-item>
       </el-dropdown-menu>
     </el-dropdown>
@@ -97,7 +96,6 @@ export default {
       margin: 5px 0 0 13px;
     }
     .header-menu-text {
-      // line-height: 41px;
       margin-left: 10px;
       margin-top: 5px;
     }
@@ -121,7 +119,6 @@ export default {
     margin-top: 20px;
     line-height: 20px;
     margin-right: 15px;
-    // border-left:1px solid rgba(255,255,255,0.6);
     border-right: 1px solid rgba(255, 255, 255, 0.6);
     i {
       margin-right: 5px;

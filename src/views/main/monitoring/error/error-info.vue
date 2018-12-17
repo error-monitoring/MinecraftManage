@@ -17,7 +17,7 @@
 </template>
 
 <script>
-import errorApi from "@/api/monitoring/error-list.js";
+
 export default {
   data() {
     return {
@@ -33,7 +33,7 @@ export default {
       let params = {
         id: this.$route.params.id
       };
-      const { code, data } = await errorApi.info(params);
+      const { code, data } = await monitoringError.info(params);
       if (code == 0) {
         this.info = data;
         this.list = data.rawLines;

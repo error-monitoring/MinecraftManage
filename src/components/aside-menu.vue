@@ -1,4 +1,10 @@
-<!--文全-->
+/*
+ * @Author: wenquan.huang 
+ * @Date: 2018-12-17 14:20:59 
+ * @Last Modified by: wq599263163@163.com
+ * @Last Modified time: 2018-12-17 14:33:24
+ */
+
 
 <template>
 	<el-aside id="gaas-aside" width="auto"
@@ -20,7 +26,7 @@
                         <div class="active-point"></div>
                     </template>
                     <el-menu-item v-for=" (i,index1) in item.children" :key='index1' :class="{'is-active':i.url == defaultActive}" :index="toUrl(i.url)">
-                       <i class="icon iconfont menu-item-icon" :class="item.icon"></i>
+                       <i class="icon iconfont menu-item-icon" :class="i.icon"></i>
                         <span slot="title">{{i.name}}</span>
                     </el-menu-item>
                 </el-submenu>
@@ -69,18 +75,18 @@ export default {
       let data = [
         {
           name: "前端监控",
-          icon: "icon-caidanlanyingyongguanli",
+          icon: "icon-jianzhuanquan",
           childrenShow: true,
           children: [
             {
               name: "应用管理",
               url: "/main/monitoring/app-list",
-              icon: "icon-caidanlanyingyongguanli",
+              icon: "icon-yingyongguanli",
             },
             {
               name: "错误管理",
               url: "/main/monitoring/aggregate-list",
-              icon: "icon-caidanlanyingyongguanli",
+              icon: "icon-plus-listview",
             },
           ]
         },
@@ -89,7 +95,7 @@ export default {
           name: "数据报告",
           permissionType: 0,
           url: "/main/data-report",
-          icon: "icon-caidanlanshujubaobiao",
+          icon: "icon-shuju",
           childrenShow: false
         }
       ];

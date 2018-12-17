@@ -1,12 +1,13 @@
+/*
+ * @Author: wenquan.huang 
+ * @Date: 2018-12-17 15:29:58 
+ * @Last Modified by:   wq599263163@163.com 
+ * @Last Modified time: 2018-12-17 15:29:58 
+ */
+
 /* eslint-disable */
 
-/**
- * 保存和获取sessionStorage
- */
 
- /**
- * author 文全
- */
 class StorageServing {
   constructor() {}
 

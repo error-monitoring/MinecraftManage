@@ -1,3 +1,10 @@
+/*
+ * @Author: wenquan.huang 
+ * @Date: 2018-12-17 15:03:08 
+ * @Last Modified by:   wq599263163@163.com 
+ * @Last Modified time: 2018-12-17 15:03:08 
+ */
+
 <template>
     <el-container class="container">
         <m-header></m-header>
@@ -5,13 +12,6 @@
         <el-container class="container-main">
             <aside-menu :is-fixed="isFixed"></aside-menu>
             <el-main class="main-body" ref="mainBody">
-
-                <!-- 面包屑 -->
-                <!-- <div class="plate-header flex align-items-center">
-                    <div class="plate-title">{{title}}</div>
-                </div> -->
-
-                <!-- 右侧路由 -->
                 <router-view></router-view>
             </el-main>
         </el-container>
@@ -22,8 +22,6 @@
 <script>
 import asideMenu from "./aside-menu.vue";
 import mHeader from './m-header'
-
-
 export default {
     components: {
         asideMenu,
@@ -60,7 +58,7 @@ export default {
 .container-main{
     height: calc(100% - 60px);
     .main-body{
-        padding: 20px 28px 36px 28px;
+        padding: 15px;
     }
 }
 .user-menu-icon {

@@ -1,3 +1,10 @@
+/*
+ * @Author: wenquan.huang 
+ * @Date: 2018-12-17 15:30:26 
+ * @Last Modified by:   wq599263163@163.com 
+ * @Last Modified time: 2018-12-17 15:30:26 
+ */
+
 /* eslint-disable */
 
 // 表情正则
