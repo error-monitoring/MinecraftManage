@@ -79,7 +79,7 @@ export default {
             },
             {
               name: "错误管理",
-              url: "/main/monitoring/error-list",
+              url: "/main/monitoring/aggregate-list",
               icon: "icon-caidanlanyingyongguanli",
             },
           ]

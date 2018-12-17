@@ -65,6 +65,8 @@ li {
     padding-right: 15px;
     color: #90908a;
     font-size: 14px;
+    // 不被压缩
+     flex-shrink: 0;
   }
 }
 .active {

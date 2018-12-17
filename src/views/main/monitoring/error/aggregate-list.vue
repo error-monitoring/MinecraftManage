@@ -12,11 +12,16 @@
             </template>
             <el-table :data="tableData" style="width: 100%" v-loading="loading">
 
-                <el-table-column prop="error_url" label="地址">
+                <el-table-column prop="error_url" label="错误地址">
                 </el-table-column>
-                <el-table-column prop="send_error" label="类型">
+                <el-table-column prop="error_type" label="错误类型">
                 </el-table-column>
-                <el-table-column prop="created_at" label="时间">
+                <el-table-column prop="error_count" label="错误次数">
+                </el-table-column>
+                <el-table-column  label="创建时间">
+                  <template slot-scope="scope">
+                        <span>{{scope.row.created_at | date}}</span>
+                    </template>
                 </el-table-column>
                 <el-table-column width="150" label="操作">
                     <template slot-scope="scope">

@@ -18,59 +18,6 @@ $white: #fff;
 img {
     max-width: 100%;
 }
-.mw-container {
-    padding-left: 12px;
-    padding-right: 12px;
-    box-sizing: border-box;
-    margin-left: auto;
-    margin-right: auto;
-    width: 100%;
-    max-width: 1200px;
-}
 
-.mw-content {
-    padding-top: 60px;
-}
-
-
-
-.mw-vertical-align {
-    &:before {
-        content: '';
-        display: inline-block;
-        height: 100%;
-        vertical-align: middle;
-    }
-    .mw-vertical-align-middle {
-        vertical-align: middle;
-    }
-    .mw-vertical-align-bottom {
-        vertical-align: bottom;
-    }
-    .mw-vertical-align-bottom, .mw-vertical-align-middle {
-        display: inline-block;
-        max-width: 100%;
-    }
-}
-
-// .el-button {
-//     font-weight: 400;
-//     &:active {
-//         box-shadow: inset 0 3px 5px rgba(0,0,0,.15);
-//     }
-//     &.is-plain {
-//         background-color: transparent;
-//     }
-//     &.sure-btn {
-//         margin-top: 30px;
-//         padding-left: 80px;
-//         padding-right: 80px;
-//     }
-// }
-
-
-.section {
-    padding: 60px 0 0 0;
-}
 
 

@@ -15,6 +15,5 @@
 </script>
 
 <style lang='scss'>
-  @import "~@/assets/less/common.scss";
 </style>
 

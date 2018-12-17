@@ -1,6 +1,6 @@
 @import '../element-ui/element-variables.scss';
 @import '../element-ui/src/index.scss';
-@import '../font//iconfont.css';
+@import '../font/iconfont.css';
 
 body,p,h1,h2,h3,h4{
     padding: 0;
@@ -10,7 +10,6 @@ body,p,h1,h2,h3,h4{
 body{
     background: #f2f3f8;
 }
-// flex end
 
 .flex{
     display: flex;

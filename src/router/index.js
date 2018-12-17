@@ -65,9 +65,9 @@ const router = new Router({
           }
         },
         {
-          path: 'monitoring/error-list',
-          name: 'monitoring-error-list',
-          component: () => import('../views/main/monitoring/error-list/error-list.vue'),
+          path: 'monitoring/aggregate-list',
+          name: 'monitoring-aggregate-list',
+          component: () => import('../views/main/monitoring/error/aggregate-list.vue'),
           meta: {
             title: '错误列表',
             isLogin:true
