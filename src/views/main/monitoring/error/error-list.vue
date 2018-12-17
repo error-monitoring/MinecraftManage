@@ -2,7 +2,7 @@
  * @Author: wenquan.huang 
  * @Date: 2018-12-17 14:40:23 
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-12-17 17:29:07
+ * @Last Modified time: 2018-12-17 17:34:42
  */
 
 <template>
@@ -55,7 +55,7 @@ export default {
       };
       const { code, data } = await this.$monitoringError.errorList(params);
       if (code == 0) {
-        // this.freeze(data);
+        this.freeze(data);
 
 
         this.list = data.list.map(item => {
