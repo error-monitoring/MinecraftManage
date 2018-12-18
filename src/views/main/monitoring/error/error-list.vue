@@ -2,7 +2,7 @@
  * @Author: wenquan.huang 
  * @Date: 2018-12-17 14:40:23 
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-12-17 20:13:07
+ * @Last Modified time: 2018-12-18 00:14:00
  */
 
 <template>
@@ -26,7 +26,9 @@
     </div>
     <div class="right">
       <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-        <el-tab-pane label="基本信息" name="info">基本信息</el-tab-pane>
+        <el-tab-pane v-if="activeName == 'info'" class='tabs' label="基本信息" name="info">
+          <errorDetails :details="details" />
+        </el-tab-pane>
       </el-tabs>
     </div>
   </div>
@@ -34,13 +36,18 @@
 
 <script>
 import { format } from "date-fns";
+import errorDetails from '@/components/error/error-details'
 export default {
   data() {
     return {
       activeName: "info",
       active: 0,
+      details:{},
       list: []
     };
+  },
+  components:{
+    errorDetails
   },
   async created() {
     await this.getList();
@@ -69,21 +76,14 @@ export default {
       const {id} =  this.list[this.active] 
       const { code, data } = await this.$monitoringError.getDateils({id});
       if (code == 0) {
-
-        Object.keys(data).forEach(item => {       
-          try {
-            data[item] = JSON.parse(data[item])
-          } catch (error) {
-            data[item] = data[item]
-          }
- 
-        })
-        console.log(data)
+        this.$toJson(data);
+        this.$freeze(data);
+        this.details = data
       }
     },
     clickItem(item, index){
       this.active = index
-      console.log(item)
+      this.getDateils()
     },
     handleClick(tab, event) {
       console.log(tab, event);
@@ -105,11 +105,14 @@ export default {
     height: 100%;
     overflow-y: auto;
     box-sizing: border-box;
+    border-right: 1px solid #e4e7ed;
+    margin-right: 10px;
     .item {
       height: 52px;
       border-bottom: 1px solid #f8f8f8;
       border-left: 8px solid #fff;
       padding: 5px;
+      
       cursor: pointer;
       color: #666;
       .item-top {
@@ -135,7 +138,9 @@ export default {
   .right {
     height: 100%;
     flex: 1;
-    // background: hotpink;
+    padding: 10px 0;
+    box-sizing: border-box;
+    overflow: hidden;
   }
 }
 </style>

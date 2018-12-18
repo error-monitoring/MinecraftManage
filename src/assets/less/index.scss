@@ -7,6 +7,11 @@ body,p,h1,h2,h3,h4{
     margin: 0;
 }
 
+a:link {color: #564FC1} /* 未被访问的链接 蓝色 */
+a:visited {color: #564FC1} /* 已被访问过的链接 蓝色 */
+a:hover {color: #564FC1} /* 鼠标悬浮在上的链接 蓝色 */
+a:active {color: #564FC1} /* 鼠标点中激活链接 蓝色 */
+
 body{
     background: #f2f3f8;
 }
@@ -66,4 +71,15 @@ body{
 }
 .mer-drawer-parent--hidden {
     overflow: hidden;
+}
+
+.error-list {
+    .el-tabs{
+        height: 100%;
+    }
+    .el-tabs__content{
+        overflow: auto;
+        height: 100%;
+        padding-bottom: 20px;
+    }
 }

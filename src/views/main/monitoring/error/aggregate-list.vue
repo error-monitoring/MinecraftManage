@@ -2,17 +2,21 @@
  * @Author: wenquan.huang 
  * @Date: 2018-12-17 14:58:00 
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-12-17 15:41:35
+ * @Last Modified time: 2018-12-18 00:54:21
  * 错误聚合列表
  */
 
 <template>
     <div>
+      
         <el-card class="no-border" shadow="always">
             <el-table :data="tableData" style="width: 100%" v-loading="loading">
                 <el-table-column prop="error_url" label="错误地址">
                 </el-table-column>
-                <el-table-column prop="error_type" label="错误类型">
+                <el-table-column  label="错误类型">
+                  <template slot-scope="scope">
+                        <el-tag type="danger">{{scope.row.error_type }}</el-tag>
+                    </template>
                 </el-table-column>
                 <el-table-column prop="error_count" label="错误次数">
                 </el-table-column>
