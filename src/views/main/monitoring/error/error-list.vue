@@ -2,7 +2,7 @@
  * @Author: wenquan.huang 
  * @Date: 2018-12-17 14:40:23 
  * @Last Modified by: wq599263163@163.com
- * @Last Modified time: 2018-12-18 00:14:00
+ * @Last Modified time: 2018-12-18 16:45:41
  */
 
 <template>
@@ -26,8 +26,11 @@
     </div>
     <div class="right">
       <el-tabs v-model="activeName" type="card" @tab-click="handleClick">
-        <el-tab-pane v-if="activeName == 'info'" class='tabs' label="基本信息" name="info">
-          <errorDetails :details="details" />
+        <el-tab-pane  class="tabs" label="基本信息" name="info">
+          <errorDetails v-if="activeName == 'info'" :details="details"/>
+        </el-tab-pane>
+        <el-tab-pane  class="tabs" label="真实错误" name="real_error">
+          <realRrror v-if="activeName == 'real_error'" :id="details.id" :real_error="details.real_error"/>
         </el-tab-pane>
       </el-tabs>
     </div>
@@ -36,22 +39,24 @@
 
 <script>
 import { format } from "date-fns";
-import errorDetails from '@/components/error/error-details'
+import errorDetails from "@/components/error/error-details";
+import realRrror from '@/components/error/real-error'
 export default {
   data() {
     return {
       activeName: "info",
       active: 0,
-      details:{},
+      details: {},
       list: []
     };
   },
-  components:{
-    errorDetails
+  components: {
+    errorDetails,
+    realRrror
   },
   async created() {
     await this.getList();
-    this.getDateils()
+    this.getDateils();
   },
   methods: {
     async getList() {
@@ -73,20 +78,19 @@ export default {
       }
     },
     async getDateils() {
-      const {id} =  this.list[this.active] 
-      const { code, data } = await this.$monitoringError.getDateils({id});
+      const { id } = this.list[this.active];
+      const { code, data } = await this.$monitoringError.getDateils({ id });
       if (code == 0) {
         this.$toJson(data);
         this.$freeze(data);
-        this.details = data
+        this.details = data;
       }
     },
-    clickItem(item, index){
-      this.active = index
-      this.getDateils()
+    clickItem(item, index) {
+      this.active = index;
+      this.getDateils();
     },
     handleClick(tab, event) {
-      console.log(tab, event);
     }
   }
 };
@@ -112,7 +116,7 @@ export default {
       border-bottom: 1px solid #f8f8f8;
       border-left: 8px solid #fff;
       padding: 5px;
-      
+
       cursor: pointer;
       color: #666;
       .item-top {

@@ -17,8 +17,8 @@ module.exports = {
     };
   },
   devServer: {
-    // proxy: "http://127.0.0.1:7001"
-    proxy:"http://minecraft.cssandjs.com"
+    proxy: "http://127.0.0.1:7001"
+    // proxy:"http://minecraft.cssandjs.com"
   },
   chainWebpack: config => {
     config.module

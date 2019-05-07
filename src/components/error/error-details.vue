@@ -102,11 +102,6 @@ export default {
       default: {}
     }
   },
-  watch: {
-    details(a) {
-      console.log(a);
-    }
-  }
 };
 </script>
 <style scoped lang='scss'>
